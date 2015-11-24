@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type="text/javascript">
+(function (d) {
+  d.getElementById('form').onsubmit = function () {
+    d.getElementById('submit').style.display = 'none';
+    d.getElementById('loading').style.display = 'block';
+  };
+}(document));
+</script>
+</head>
+<body>
+<form action="{{ url_for('redirect') }}" method=post>
+  <dl>
+    <dt>Database to check:
+    <dd><input type=checkbox name='databank' value ="DSSP"> DSSP<br>
+    <dd><input type=checkbox name='databank' value ="HSSP"> HSSP<br>
+    <dd><input type=checkbox name='databank' value ="BDB"> BDB<br>
+    <dd><input type=checkbox onClick="toggle(this)" /> All databases<br>
+    <dd><input type=submit value=Submit>
+    <dd><div id="loading" style="display:none;"><img src="/static/loading.gif"alt="pic1" />Loading!</div>
+  </dl>
+</form>
+</body>
+</html>

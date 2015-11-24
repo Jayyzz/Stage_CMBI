@@ -1,0 +1,48 @@
+<html>
+<head>
+<script type="text/javascript">
+var x;
+var flashing = true;
+function changecolors() {
+    	 x =1
+    	 setInterval(change, 1000);
+	 }
+
+	 function change() {
+    	 if (x === 1 && flashing == true) {
+        	 color = "red";
+        	 x = 2;
+    	 } else if (x ===2 && flashing == true) {
+        	 color = "white";
+        	 x = 1;
+    	 } else {
+		 document.body.style.background = "white";
+		 return;
+	 }
+
+    	 document.body.style.background = color;
+	 }
+function addEvent(obj, evt, fn) {
+    if (obj.addEventListener) {
+        obj.addEventListener(evt, fn, false);
+    }
+    else if (obj.attachEvent) {
+        obj.attachEvent("on" + evt, fn);
+    }
+}
+addEvent(window,"load",function(e) {
+    addEvent(document, "mousemove", function(e) {
+        e = e ? e : window.event;
+        var from = e.relatedTarget || e.toElement;
+        if (!from || from.nodeName == "HTML") {
+	    flashing = false;
+        }
+    });
+});
+window.onload = changecolors();
+</script>
+</head>
+<body>
+{% for entry in entries %}{{entry}}<br /> {% endfor %}
+</body>
+</html>

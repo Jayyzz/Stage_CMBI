@@ -1,0 +1,18 @@
+<form action="{{ url_for('redirect') }}" method=post class=create-entry>
+
+<script language="JavaScript">
+function toggle(source) {
+  checkboxes = document.getElementsByName('database');
+  for each(var checkbox in checkboxes)
+    checkbox.checked = source.checked;
+}
+</script>
+  <dl>
+    <dt>Database to check:
+    <dd><input type=checkbox name=database value ="DSSP"> DSSP<br>
+    <dd><input type=checkbox name=database value ="HSSP"> HSSP<br>
+    <dd><input type=checkbox name=database value ="BDB"> BDB<br>
+    <dd><input type=checkbox onClick="toggle(this)" /> All databases<br>
+    <dd><input type=submit value=Submit>
+  </dl>
+</form>
